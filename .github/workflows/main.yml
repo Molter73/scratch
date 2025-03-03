@@ -1,0 +1,14 @@
+name: Test CI
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test-crictl-creds:
+    runs-on: ubuntu-24.04
+    env:
+      CRICTL_CREDS: ${{ secrets.CRICTL_USERNAME }}:${{ secrets.CRICTL_PASSWORD }}
+    steps:
+      - name: print creds
+        run: echo "$CRICTL_CREDS"
+
